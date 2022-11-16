@@ -15,8 +15,13 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/" passHref>
-              <a className="text-lg text-1 hover:text-main">Home</a>
+            <Link href="/projects" passHref>
+              <a className="text-lg text-1 hover:text-main">Projects</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" passHref>
+              <a className="text-lg text-1 hover:text-main">Blog</a>
             </Link>
           </li>
           <li>
@@ -25,8 +30,8 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/blog" passHref>
-              <a className="text-lg text-1 hover:text-main">Blog</a>
+            <Link href="/contact" passHref>
+              <a className="text-lg text-1 hover:text-main">Resume</a>
             </Link>
           </li>
           <li>
