@@ -27,7 +27,7 @@ export default function Home() {
             </div>
             <div className="flex justify-center">
               <div className='rounded-lg overflow-hidden lg:ml-auto'>
-                <img src={MyPhoto.src} alt="" className="inline-block hover:grayscale-0 select-none transition-all duration-500" />
+                <img src={MyPhoto.src} alt="" className="inline-block hover:grayscale-0 w-96 h-auto select-none transition-all duration-500" />
               </div>
             </div>
           </div>

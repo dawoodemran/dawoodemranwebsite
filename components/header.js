@@ -16,7 +16,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/" passHref>
+            <Link href="/projects" passHref>
               <a className="text-lg text-1 hover:text-2">Projects</a>
             </Link>
           </li>
