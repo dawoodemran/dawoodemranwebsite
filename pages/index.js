@@ -13,10 +13,10 @@ export default function Home() {
         <main>
           <div className="max-w-7xl px-4 mx-auto grid lg:grid-cols-2 gap-y-8 items-center my-10 lg:my-20">
             <div className="space-y-6 text-center lg:text-left">
-              <h1 className='text-5xl font-tiempos leading-tight'>
+              <h1 className='text-5xl font-tiempos leading-[1.15]'>
                 I focus on simplifying complex products into inclusive solutions.
               </h1>
-              <p className='text-xl text-1 max-w-lg'>
+              <p className='text-xl text-1 font-light max-w-lg'>
                 I love a challenge and I love to solve problems, and I seek new experiences to grow and learn more to improve myself. I work as a UX/UI designer
               </p>
               <Link href="/blog" passHref>
@@ -27,7 +27,7 @@ export default function Home() {
             </div>
             <div className="flex justify-center">
               <div className='rounded-lg overflow-hidden lg:ml-auto'>
-                <img src={MyPhoto.src} alt="" className="inline-block grayscale hover:grayscale-0 select-none transition-all duration-500" />
+                <img src={MyPhoto.src} alt="" className="inline-block hover:grayscale-0 select-none transition-all duration-500" />
               </div>
             </div>
           </div>
