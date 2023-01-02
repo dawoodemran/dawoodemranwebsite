@@ -19,7 +19,7 @@ export default function Home() {
               <p className='text-xl text-1 font-light max-w-lg'>
                 I love a challenge and I love to solve problems, and I seek new experiences to grow and learn more to improve myself. I work as a UX/UI designer
               </p>
-              <Link href="/blog" passHref>
+              <Link href="/blog" legacyBehavior>
                 <a className="inline-flex py-4 px-10 rounded-lg bg-2 text-white font-semibold hover:opacity-95">
                   Talk to me!
                 </a>

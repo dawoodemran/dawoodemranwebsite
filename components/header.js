@@ -9,43 +9,44 @@ export default function Header() {
 
         <ul className="flex items-center space-x-4 lg:space-x-8 col-span-10 lg:col-span-10">
           <li>
-            <Link href="/" passHref>
+            <Link href="/" legacyBehavior>
               <a title="Home">
                 <img src={Logo.src} />
               </a>
             </Link>
           </li>
           <li>
-            <Link href="/projects" passHref>
+            <Link href="/projects" legacyBehavior>
               <a className="text-lg text-1 hover:text-2">Projects</a>
             </Link>
           </li>
           <li>
-            <Link href="/about" passHref>
+            <Link href="/blog" legacyBehavior>
               <a className="text-lg text-1 hover:text-2">Blog</a>
             </Link>
           </li>
           <li>
-            <Link href="/blog" passHref>
+            <Link href="/about" legacyBehavior>
               <a className="text-lg text-1 hover:text-2">About</a>
             </Link>
           </li>
           <li>
-            <Link href="/contact" passHref>
+            <Link href="/resume" legacyBehavior>
               <a className="text-lg text-1 hover:text-2">Resume</a>
             </Link>
           </li>
           <li>
-            <Link href="/contact" passHref>
+            <Link href="/contact" legacyBehavior>
               <a className="text-lg text-1 hover:text-2">Contact</a>
             </Link>
           </li>
         </ul>
         <ul className="items-center justify-end space-x-4 col-span-2 hidden lg:flex">
           <li>
-            <Link href="" passHref>
+            <Link href="" legacyBehavior>
               <a title='My Twitter' target="_blank">
                 <svg
+                  className='transition-transform hover:scale-125 duration-300'
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
                   height="17"
@@ -61,9 +62,10 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="" passHref>
+            <Link href="" legacyBehavior>
               <a title='My Instagram' target="_blank">
                 <svg
+                  className='transition-transform hover:scale-125 duration-300'
                   xmlns="http://www.w3.org/2000/svg"
                   width="19"
                   height="20"
@@ -79,9 +81,10 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="" passHref>
+            <Link href="" legacyBehavior>
               <a title='My Linkedin' target="_blank">
                 <svg
+                  className='transition-transform hover:scale-125 duration-300'
                   xmlns="http://www.w3.org/2000/svg"
                   width="19"
                   height="20"
@@ -97,18 +100,18 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="" passHref>
+            <Link href="" legacyBehavior>
               <a title='My Dribble' target="_blank">
-                <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className='transition-transform hover:scale-125 duration-300' width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 10C0 8.27733 0.424346 6.68767 1.273 5.231C2.12167 3.77433 3.27435 2.62167 4.731 1.773C6.18767 0.924327 7.77735 0.5 9.5 0.5C11.2227 0.5 12.8123 0.924327 14.269 1.773C15.7257 2.62167 16.8783 3.77433 17.727 5.231C18.5757 6.68767 19 8.27733 19 10C19 11.7227 18.5757 13.3123 17.727 14.769C16.8783 16.2257 15.7257 17.3783 14.269 18.227C12.8123 19.0757 11.2227 19.5 9.5 19.5C7.77735 19.5 6.18767 19.0757 4.731 18.227C3.27435 17.3783 2.12167 16.2257 1.273 14.769C0.424346 13.3123 0 11.7227 0 10ZM1.577 10C1.577 11.976 2.242 13.7177 3.572 15.225C4.18 14.0343 5.14267 12.9007 6.46 11.824C7.77735 10.7473 9.063 10.0697 10.317 9.791C10.127 9.34767 9.94335 8.94867 9.766 8.594C7.58735 9.29067 5.23135 9.639 2.698 9.639C2.204 9.639 1.83667 9.63267 1.596 9.62C1.596 9.67067 1.59285 9.734 1.5865 9.81C1.58017 9.886 1.577 9.94933 1.577 10ZM1.824 8.043C2.10267 8.06833 2.51435 8.081 3.059 8.081C5.17435 8.081 7.182 7.796 9.082 7.226C8.11935 5.516 7.06167 4.091 5.909 2.951C4.90835 3.45767 4.05017 4.16067 3.3345 5.06C2.61885 5.95933 2.11535 6.95367 1.824 8.043ZM4.655 16.251C6.08635 17.3657 7.70135 17.923 9.5 17.923C10.4373 17.923 11.3683 17.7457 12.293 17.391C12.0397 15.225 11.5457 13.1287 10.811 11.102C9.64567 11.3553 8.47085 11.995 7.2865 13.021C6.10217 14.047 5.225 15.1237 4.655 16.251ZM7.562 2.343C8.67667 3.49567 9.709 4.93333 10.659 6.656C12.3817 5.934 13.68 5.01567 14.554 3.901C13.0847 2.685 11.4 2.077 9.5 2.077C8.854 2.077 8.208 2.16567 7.562 2.343ZM11.343 8.005C11.533 8.41033 11.7483 8.92333 11.989 9.544C12.9263 9.45533 13.946 9.411 15.048 9.411C15.8333 9.411 16.6123 9.43 17.385 9.468C17.2837 7.74533 16.663 6.21267 15.523 4.87C14.6997 6.09867 13.3063 7.14367 11.343 8.005ZM12.464 10.874C13.11 12.7487 13.547 14.674 13.775 16.65C14.7757 16.004 15.5927 15.1743 16.226 14.161C16.8593 13.1477 17.2393 12.052 17.366 10.874C16.4413 10.8107 15.599 10.779 14.839 10.779C14.1423 10.779 13.3507 10.8107 12.464 10.874Z" fill="#80848F" />
                 </svg>
               </a>
             </Link>
           </li>
           <li>
-            <Link href="" passHref>
-            <a title='My GitHub' target="_blank">
-                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <Link href="" legacyBehavior>
+              <a title='My GitHub' target="_blank">
+                <svg className='transition-transform hover:scale-125 duration-300' width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9.5 0.5C4.25363 0.5 0 4.59285 0 9.64092C0 13.9242 3.06533 17.5082 7.19783 18.5C7.1535 18.3766 7.125 18.2334 7.125 18.0559V16.4936C6.73946 16.4936 6.09346 16.4936 5.93117 16.4936C5.28121 16.4936 4.70329 16.2247 4.42304 15.725C4.11192 15.1697 4.05808 14.3203 3.287 13.8008C3.05821 13.6279 3.23237 13.4306 3.496 13.4573C3.98288 13.5898 4.38663 13.9113 4.76663 14.3881C5.14504 14.8657 5.32317 14.9739 6.03012 14.9739C6.37292 14.9739 6.88592 14.9548 7.36883 14.8817C7.6285 14.2472 8.07738 13.6629 8.626 13.3872C5.4625 13.0741 3.95279 11.5598 3.95279 9.50381C3.95279 8.61866 4.34467 7.76246 5.01046 7.04109C4.79196 6.32505 4.51725 4.86479 5.09438 4.30872C6.51779 4.30872 7.37833 5.19691 7.58496 5.43686C8.29429 5.203 9.07329 5.07046 9.89188 5.07046C10.712 5.07046 11.4942 5.203 12.2051 5.43838C12.4094 5.19996 13.2707 4.30872 14.6973 4.30872C15.2768 4.86555 14.9989 6.33191 14.778 7.04642C15.4399 7.76627 15.8294 8.62019 15.8294 9.50381C15.8294 11.5582 14.322 13.0718 11.1633 13.3864C12.0325 13.8229 12.6667 15.0493 12.6667 15.9733V18.0559C12.6667 18.1351 12.6485 18.1923 12.639 18.2601C16.3408 17.0116 19 13.6294 19 9.64092C19 4.59285 14.7464 0.5 9.5 0.5Z" fill="#80848F" />
                 </svg>
               </a>

@@ -3,86 +3,49 @@ import Meta from '../components/meta'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import { useState, useEffect } from 'react'
-import ACCI from '/public/projects/acci.png'
+import { sanityClient, urlFor } from '../sanity'
+import { PortableText } from '@portabletext/react';
 
-export default function Projects() {
-  const [projects] = useState([
-    {
-      id: 1,
-      title: "ACCI finance Project",
-      subHeading: 'This project is develped in Afghanistan.',
-      summary: "This digital platform created to ease managing financial reports and",
-      thumbnail: ACCI,
-      image: ACCI,
-      description: `
-        <p class='mb-6 sm:mb-8'>This digital platform for the Afghan Chamber of Commerce and Industries (ACCI) was created to ease managing financial reports and accounting, quick and easy inventory management, online memberships and subscriptions, online verification of the membership certificates, and online verification of the membership cards.</p>
-        <h4 class='text-lg sm:text-xl font-semibold text-black mb-4'>My Responsibilities</h4>
-        <ul>
-          <li>Study the brief</li>
-          <li>Conduct user interviews </li>
-          <li>Conduct compatitive analysis</li>
-          <li>Create a moodboard</li>
-          <li>Sketching and Wireframing</li>
-          <li>Prototyping (lo/Hi-fi)</li>
-          <li>Information Architecture</li>
-          <li>Usability Testing</li>
-          <li>Design Operation</li>
-          <li>Design Research</li>
-          <li>Project Management</li>
-        </ul>
-      `
+const imageComponent = ({ value, isInline }) => {
+  return (
+    <img
+      src={urlFor(value).url()}
+      alt={value.alt || ' '}
+      loading="lazy"
+      style={{
+        display: isInline ? 'inline-block' : 'block',
+      }}
+      className='w-full h-auto'
+    />
+  )
+}
+
+const components = {
+  types: {
+    image: imageComponent,
+  },
+  block: {
+    normal: ({ children }) => <p className="text-lg sm:text-xl text-1 mb-4">{children}</p>,
+    h2: ({ children }) => <h2 className='text-2xl sm:text-4xl text-4 mb-4'>{children}</h2>,
+  },
+  marks: {
+    link: ({ value, children }) => {
+      const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
+      return (
+        <a className='text-main underline' href={value?.href} target={target} rel={target === '_blank' && 'noindex nofollow'}>
+          {children}
+        </a>
+      )
     },
-    {
-      id: 2,
-      title: "ACCI finance Project",
-      subHeading: 'This project is develped in Afghanistan.',
-      summary: "This digital platform created to ease managing financial reports and",
-      thumbnail: ACCI,
-      image: ACCI,
-      description: `
-        <p class='mb-6 sm:mb-8'>This digital platform for the Afghan Chamber of Commerce and Industries (ACCI) was created to ease managing financial reports and accounting, quick and easy inventory management, online memberships and subscriptions, online verification of the membership certificates, and online verification of the membership cards.</p>
-        <h4 class='text-lg sm:text-xl font-semibold text-black mb-4'>My Responsibilities</h4>
-        <ul>
-          <li>Study the brief</li>
-          <li>Conduct user interviews </li>
-          <li>Conduct compatitive analysis</li>
-          <li>Create a moodboard</li>
-          <li>Sketching and Wireframing</li>
-          <li>Prototyping (lo/Hi-fi)</li>
-          <li>Information Architecture</li>
-          <li>Usability Testing</li>
-          <li>Design Operation</li>
-          <li>Design Research</li>
-          <li>Project Management</li>
-        </ul>
-      `
-    },
-    {
-      id: 3,
-      title: "ACCI finance Project",
-      subHeading: 'This project is develped in Afghanistan.',
-      summary: "This digital platform created to ease managing financial reports and",
-      thumbnail: ACCI,
-      image: ACCI,
-      description: `
-        <p class='mb-6 sm:mb-8'>This digital platform for the Afghan Chamber of Commerce and Industries (ACCI) was created to ease managing financial reports and accounting, quick and easy inventory management, online memberships and subscriptions, online verification of the membership certificates, and online verification of the membership cards.</p>
-        <h4 class='text-lg sm:text-xl font-semibold text-black mb-4'>My Responsibilities</h4>
-        <ul>
-          <li>Study the brief</li>
-          <li>Conduct user interviews </li>
-          <li>Conduct compatitive analysis</li>
-          <li>Create a moodboard</li>
-          <li>Sketching and Wireframing</li>
-          <li>Prototyping (lo/Hi-fi)</li>
-          <li>Information Architecture</li>
-          <li>Usability Testing</li>
-          <li>Design Operation</li>
-          <li>Design Research</li>
-          <li>Project Management</li>
-        </ul>
-      `
-    },
-  ])
+    strong: ({ children }) => <strong className='text-main'>{children}</strong>
+  },
+  list: {
+    bullet: ({ children }) => <ul className="list-disc ml-[22px] mb-4 text-1 text-lg sm:text-xl">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal ml-[22px] mb-4 text-1 text-lg sm:text-xl">{children}</ol>,
+  },
+}
+
+export default function Projects({ projects }) {
 
   const [open, setOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState(null)
@@ -110,8 +73,8 @@ export default function Projects() {
 
   return (
     <div className='font-poppins bg-3'>
-      <Meta />
-      <div className="relative font-bai-jamjuree min-h-screen flex flex-col justify-between">
+      <Meta meta={{ title: "Projects - Dawood Emran" }} />
+      <div className="relative font-poppins min-h-screen flex flex-col justify-between">
         <Header />
         <main>
           <div className="max-w-7xl px-4 mx-auto my-10 lg:my-20">
@@ -128,8 +91,8 @@ export default function Projects() {
                 {
                   projects.map((project) => {
                     return (
-                      <li className='relative space-y-4 w-full h-full cursor-pointer group' key={project?.id} onClick={() => toggleModal(project)}>
-                        <img src={project?.thumbnail.src} className='w-full h-auto group-hover:transition-transform duration-300 group-hover:scale-105' />
+                      <li className='relative space-y-4 w-full h-full cursor-pointer group' key={project?._id} onClick={() => toggleModal(project)}>
+                        <img src={urlFor(project?.thumbnail).url()} className='w-full h-auto group-hover:transition-transform duration-300 group-hover:scale-105 rounded-xl' />
                         <div className='space-y-2'>
                           <h4 className='text-xl font-semibold'>{project?.title}</h4>
                           <p className='text-1 text-base sm:text-lg'>{project?.summary}</p>
@@ -144,7 +107,7 @@ export default function Projects() {
         </main>
         <Footer />
       </div>
-      {open ? <Modal close={toggleModal} project={selectedProject} /> : null}
+      {open && <Modal close={toggleModal} project={selectedProject} />}
     </div>
   )
 }
@@ -191,8 +154,9 @@ function Modal({ close, project }) {
                     </button>
                   </div>
                 </div>
-                <img src={project?.thumbnail.src} alt="proejct image" className='w-full h-auto' />
-                <div className='max-w-3xl mx-auto text-base sm:text-lg text-1' dangerouslySetInnerHTML={{ __html: project?.description }}>
+                <img src={urlFor(project?.mainImage).url()} alt="proejct image" className='w-full h-auto' />
+                <div className='max-w-3xl mx-auto text-base sm:text-lg text-1'>
+                  <PortableText value={project?.body} components={components} />
                 </div>
               </article>
             </div>
@@ -201,4 +165,32 @@ function Modal({ close, project }) {
       </div >
     </div >
   )
+}
+
+
+export const getServerSideProps = async () => {
+  const query = `*[_type == "project"]{
+    _id,
+    title,
+    subHeading,
+    summary,
+    slug,
+    publishedAt,
+    thumbnail,
+    mainImage,
+    author -> {
+      name,
+      image
+    },
+    body,
+  }`;
+
+  const projects = await sanityClient.fetch(query);
+
+  return {
+    props: {
+      projects
+    }
+  }
+
 }
