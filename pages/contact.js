@@ -41,12 +41,12 @@ export default function Home() {
             <input type="hidden" name="form-name" value="contact" />
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
               <div className="space-y-4 sm:space-y-6">
-                <input name='firstname' type="text" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-main w-full" placeholder="Your name" required />
-                <input name='email' type="email" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-main w-full" placeholder="E-mail" required />
-                <input name='phone' type="text" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-main w-full" placeholder="Phone" />
+                <input name='firstname' type="text" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-[#FF385C] w-full" placeholder="Your name" required />
+                <input name='email' type="email" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-[#FF385C] w-full" placeholder="E-mail" required />
+                <input name='phone' type="text" className="rounded-xl px-8 py-5 text-1 bg-white text-xl border border-1/20 focus:outline-none focus:border focus:border-[#FF385C] w-full" placeholder="Phone" />
               </div>
               <div>
-                <textarea name='message' className="rounded-xl h-full w-full bg-white px-8 py-5 text-1 text-xl border border-1/20 focus:outline-none focus:border focus:border-main" placeholder="Message" required></textarea>
+                <textarea name='message' className="rounded-xl h-full w-full bg-white px-8 py-5 text-1 text-xl border border-1/20 focus:outline-none focus:border focus:border-[#FF385C]" placeholder="Message" required></textarea>
               </div>
             </div>
             <div className="text-center mt-6 sm:mt-8">
